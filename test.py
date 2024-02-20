@@ -1,4 +1,7 @@
-from src.vaic import text_response
+from src.vaic import text_response, image_response
+from PIL import Image
+import io
+
 
 # Test the text response
 text_prompt = """
@@ -10,3 +13,7 @@ The protagonist has pledged his loyalty to a powerful firemage who runs a cirle 
 The mage is supported by a priest of the light who struggles with her own inner darkness.
 """
 print(text_response(text_prompt))
+
+image_bytes = image_response(f"Draw a graphic novel cover for {text_prompt}")
+image = Image.open(io.BytesIO(image_bytes))
+image.show()

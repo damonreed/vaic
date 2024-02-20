@@ -1,4 +1,4 @@
-# from vertexai.preview.vision_models import ImageGenerationModel
+from vertexai.preview.vision_models import ImageGenerationModel
 from vertexai.preview.generative_models import (
     GenerativeModel,
     HarmCategory,
@@ -7,7 +7,7 @@ from vertexai.preview.generative_models import (
 
 # Initialize models
 gen_model = GenerativeModel("gemini-pro")
-# image_model = ImageGenerationModel.from_pretrained("imagegeneration")
+image_model = ImageGenerationModel.from_pretrained("imagegeneration")
 
 # Specify default safety and generation parameters
 safety_settings = {
@@ -26,10 +26,10 @@ def text_response(text_prompt):
     return context.text
 
 
-# def image_response(image_prompt):
-#     image = image_model.generate_images(
-#         prompt=image_prompt,
-#         seed=0,
-#         number_of_images=1,
-#     )
-#     return image[0]._image_bytes
+def image_response(image_prompt):
+    image = image_model.generate_images(
+        prompt=image_prompt,
+        seed=0,
+        number_of_images=1,
+    )
+    return image[0]._image_bytes
